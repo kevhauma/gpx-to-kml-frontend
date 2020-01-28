@@ -1,7 +1,10 @@
 <template>
-    <div class="q-pa-md column items-start q-gutter-y-md">
+    <div class="filedropper">
+        
         <q-btn round color="primary" icon="refresh" @click="refresh" class="top-right" />
+        
         <div v-if="picking">
+            <h5>Pick files from PC</h5>
             <q-file :value="files" accept=".gpx" counter :counter-label="counterLabelFn" icon="note_add" ref="fileInput" @input="updateFiles" label="Pick files" multiple style="min-width:400px">
                 <!--accept=".gpx"-->
                 <template v-slot:file="{ index, file }">

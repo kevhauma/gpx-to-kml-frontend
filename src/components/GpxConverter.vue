@@ -1,6 +1,5 @@
 <template>
     <div>
-        {{filename}}
         <q-linear-progress size="25px" style="width:100%" :value="progress" color="accent">
             <div class="absolute-full flex flex-center">
                 <q-badge color="white" text-color="accent" :label="progressLabel" />
@@ -20,8 +19,6 @@
         },
         props: {
             content: String,
-
-
         },
         created() {
             this.getKML()

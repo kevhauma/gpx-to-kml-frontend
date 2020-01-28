@@ -65,9 +65,7 @@
 </template>
 
 <script>
-    import {
-        Dark
-    } from 'quasar'
+    import { Dark } from 'quasar'
     export default {
         name: 'MyLayout',
 

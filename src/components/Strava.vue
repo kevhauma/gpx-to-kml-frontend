@@ -21,8 +21,11 @@
         },
         computed: {
             AuthLink() {
+                console.log("path: ", window.location.pathname)
+                console.log("route: ", this.$route.query.page)
                 return `http://www.strava.com/oauth/authorize?client_id=${this.client_id}&response_type=code&scope=${this.scope}&approval_prompt=force&redirect_uri=${this.responseURL}`
-            }
+            },
+            
         }
     }
 

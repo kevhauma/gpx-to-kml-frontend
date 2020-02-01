@@ -1,37 +1,30 @@
 <template>
-    <div class="q-pa-md column items-start q-gutter-y-md" v-if="fileContentAfterPromise">
-        <gpx-converter v-for="(file,index) in fileContentAfterPromise" :content=file :key="index" @return="returned"></gpx-converter>
+    <div class="q-pa-md column items-start q-gutter-y-md">
         <q-btn v-if="fileToDL" @click="download()" color="primary" icon="file_copy" label="Download KML" />
+        <gpx-converter-card v-for="(gpx,index) in gpxs" :gpxString=gpx :key="index" @return="returned"></gpx-converter-card>
     </div>
 </template>
 <script>
-    import GpxConverter from "./GpxConverter"
+    import GpxConverterCard from "./GpxConverterCard"
     import createFile from "../util/createFile"
     export default {
         name: 'CreateKml',
         data() {
             return {
-                fileContentAfterPromise: null,
                 returnCounter: 0,
                 returnedStrings: [],
                 fileToDL: null,
             }
         },
         props: {
-            files: {
+            gpxs: {
                 type: Array,
                 required: true,
 
             }
         },
-        created() {
-            let content = []
-            for (let f of this.files)
-                content.push(f.text())
-            Promise.all(content).then(c => this.fileContentAfterPromise = c)
-        },
         components: {
-            GpxConverter
+            GpxConverterCard
         },
         methods: {
             returned(string) {

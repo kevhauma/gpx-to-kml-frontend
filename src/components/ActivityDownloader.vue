@@ -1,6 +1,6 @@
 <template>
     <div class="cards">
-        <activity-download v-if="activities" v-for="activity in activities" :key="activity.id" :ac="ac" :activity="activity"></activity-download>
+        <activity-download v-if="activities" v-for="activity in activities" :key="activity" :ac="ac" :id="activity"></activity-download>
 
     </div>
 </template>
@@ -29,14 +29,8 @@
             }
             axios.get(`https://www.strava.com/api/v3/athletes/${this.athlete}/activities?per_page=100`, getConfig)
                 .then((res) => {
-                    this.activities = res.data.map(a => {
-                        return {
-                            id: a.id,
-                            name: a.name,
-                            date: a.start_date_local,
-                            distance: a.distance
-                        }
-                    })
+                console.log(res.data)
+                    this.activities = res.data.map(a =>a.id)
 
                 }).catch(e => {
                     console.log(e)

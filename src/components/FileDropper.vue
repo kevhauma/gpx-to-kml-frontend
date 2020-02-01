@@ -25,14 +25,14 @@
             <q-btn v-if="files" @click="generate" color="primary" icon="file_copy" label="Generate KML" />
         </div>
         <div v-if="!picking">
-            <create-kml :files=files>
+            <gpx-from-file :files=files>
 
-            </create-kml>
+            </gpx-from-file>
         </div>
     </div>
 </template>
 <script>
-    import CreateKml from "./CreateKml"
+    import GpxFromFile from "./GpxFromFile"
     export default {
         name: 'FileDropper',
         data() {
@@ -42,7 +42,7 @@
             }
         },
         components: {
-            CreateKml
+            GpxFromFile
         },
         methods: {
             updateFiles(files) {

@@ -1,8 +1,11 @@
 const routes = [
     {
         path: '/',
-         mode: 'history',
         component: () => import('layouts/MyLayout.vue'),
+        meta: {
+            auth: true,
+            title: 'gpx to kml'
+        },
         children: [
             {
                 path: '',
